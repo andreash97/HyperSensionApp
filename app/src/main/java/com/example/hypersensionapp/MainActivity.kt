@@ -20,8 +20,6 @@ class MainActivity : AppCompatActivity() {
             val intentconnect = Intent(this, ConnectedActivity::class.java)
             startActivity(intentconnect)
         }
-
-
     }
 
 
