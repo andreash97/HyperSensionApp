@@ -2,4 +2,5 @@
     <string name="app_name">HyperSension</string>
     <string name="action_settings">Settings</string>
     <string name="connect">Koble til</string>
+    <string name="disconnect">Koble fra</string>
 </resources>
