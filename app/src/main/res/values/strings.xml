@@ -3,4 +3,9 @@
     <string name="action_settings">Settings</string>
     <string name="connect">Koble til</string>
     <string name="disconnect">Koble fra</string>
+    <string name="batterystatustext">Batteri status</string>
+    <string name="hrtext">Hjerterate</string>
+    <string name="devicestatustext">Status på enhet:</string>
+    <string name="devicestatus">On body</string>
+    <string name="testsignaltext">Test signal</string>
 </resources>
