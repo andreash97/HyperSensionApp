@@ -8,4 +8,5 @@
     <string name="devicestatustext">Status på enhet:</string>
     <string name="devicestatus">On body</string>
     <string name="testsignaltext">Test signal</string>
+    <string name="refresh">Oppdater</string>
 </resources>

@@ -3,7 +3,7 @@ package com.example.hypersensionapp
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         connectbutton.setOnClickListener {
-            val intentconnect = Intent(this, ConnectedActivity::class.java)
+            val intentconnect = Intent(this, SelectDeviceActivity::class.java)
             startActivity(intentconnect)
         }
     }
