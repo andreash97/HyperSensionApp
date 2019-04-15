@@ -46,7 +46,7 @@ class SelectDeviceActivity : AppCompatActivity() {
 
         if (!m_pairedDevices.isEmpty()) {
             for (device: BluetoothDevice in m_pairedDevices) {
-                list.add(device.)
+                list.add(device)
                 Log.i("device", ""+device)
             }
         } else {
