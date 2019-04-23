@@ -89,7 +89,7 @@ class ControlActivity: AppCompatActivity() {
         override fun onPostExecute(result: String?) {
             super.onPostExecute(result)
             if (!connectSuccess) {
-                Log.i("data", "couldn't connect")
+                Log.i("data", "Kunne ikke koble til")
             } else {
                 m_isConnected = true
             }
