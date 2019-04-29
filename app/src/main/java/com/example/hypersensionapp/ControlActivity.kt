@@ -34,9 +34,10 @@ class ControlActivity: AppCompatActivity() {
         testsignalbutton.setOnClickListener { sendCommand("uio all") }
         disconnectbutton.setOnClickListener {
             disconnect()
-            val intentdisconnect = Intent(this, MainActivity::class.java)
-            startActivity(intentdisconnect)
         }
+    }
+    override fun onBackPressed() {
+        disconnect()
     }
 
     private fun sendCommand(input: String) {
@@ -55,11 +56,14 @@ class ControlActivity: AppCompatActivity() {
                 m_bluetoothSocket!!.close()
                 m_bluetoothSocket = null
                 m_isConnected = false
+
             } catch (e: IOException) {
                 e.printStackTrace()
             }
         }
         finish()
+        val intentdisconnect = Intent(this, MainActivity::class.java)
+        startActivity(intentdisconnect)
     }
 
     private class ConnectToDevice(c: Context) : AsyncTask<Void, Void, String>() {
