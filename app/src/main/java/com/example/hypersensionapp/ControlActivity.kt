@@ -1,12 +1,16 @@
 package com.example.hypersensionapp
 
-import android.app.ProgressDialog
+import android.annotation.TargetApi
+import android.app.*
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothSocket
 import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.os.AsyncTask
+import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -22,16 +26,49 @@ class ControlActivity: AppCompatActivity() {
         lateinit var m_bluetoothAdapter: BluetoothAdapter
         var m_isConnected: Boolean = false
         lateinit var m_address: String
-    }
 
+    }
+    lateinit var notificationManager : NotificationManager
+    lateinit var notificationChannel: NotificationChannel
+    lateinit var builder : Notification.Builder
+    private var ChannelID = "com.example.hypersensionapp"
+    private var description = "Low battery"
+
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.connected)
         m_address = intent.getStringExtra(SelectDeviceActivity.EXTRA_ADDRESS)
-
         ConnectToDevice(this).execute()
+        notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-        testsignalbutton.setOnClickListener { sendCommand("uio all") }
+        testsignalbutton.setOnClickListener { // warning https://www.youtube.com/watch?v=Fo7WksYMlCU
+            val intent = Intent(this, ControlActivity::class.java)
+            val pendingIntent = PendingIntent.getActivity(this, 0, intent,PendingIntent.FLAG_UPDATE_CURRENT)
+           if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+               notificationChannel = NotificationChannel(ChannelID, description, NotificationManager.IMPORTANCE_HIGH)
+               notificationChannel.enableLights(true)
+               notificationChannel.lightColor = Color.YELLOW
+               notificationChannel.enableVibration(true)
+               notificationManager.createNotificationChannel(notificationChannel)
+               builder = Notification.Builder(this,ChannelID)
+                   .setContentTitle("HyperSension device LOW BATTERY")
+                   .setContentText("Your HyperSension device is low on battery, please charge")
+                   .setSmallIcon(R.mipmap.ic_launcher_round)
+                   .setLargeIcon((BitmapFactory.decodeResource(this.resources,R.mipmap.ic_launcher)))
+                   .setContentIntent(pendingIntent)
+                   .setAutoCancel(true)
+           } else {
+               builder = Notification.Builder(this)
+                   .setContentTitle("HyperSension device LOW BATTERY")
+                   .setContentText("Your HyperSension device is low on battery, please charge")
+                   .setSmallIcon(R.mipmap.ic_launcher_round)
+                   .setLargeIcon((BitmapFactory.decodeResource(this.resources,R.mipmap.ic_launcher)))
+                   .setContentIntent(pendingIntent)
+                   .setAutoCancel(true)
+           }
+            notificationManager.notify(1234,builder.build())
+        }
         disconnectbutton.setOnClickListener {
             disconnect()
         }
