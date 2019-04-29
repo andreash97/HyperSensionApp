@@ -5,6 +5,7 @@ import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothSocket
 import android.content.Context
+import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -31,7 +32,11 @@ class ControlActivity: AppCompatActivity() {
         ConnectToDevice(this).execute()
 
         testsignalbutton.setOnClickListener { sendCommand("uio all") }
-        disconnectbutton.setOnClickListener { disconnect() }
+        disconnectbutton.setOnClickListener {
+            disconnect()
+            val intentdisconnect = Intent(this, MainActivity::class.java)
+            startActivity(intentdisconnect)
+        }
     }
 
     private fun sendCommand(input: String) {

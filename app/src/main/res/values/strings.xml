@@ -7,6 +7,6 @@
     <string name="hrtext">Hjerterate</string>
     <string name="devicestatustext">Status på enhet:</string>
     <string name="devicestatus">On body</string>
-    <string name="testsignaltext">Test signal</string>
+    <string name="testsignaltext">Verifisere signal</string>
     <string name="refresh">Oppdater</string>
 </resources>
