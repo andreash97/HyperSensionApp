@@ -30,7 +30,7 @@ class ControlActivity: AppCompatActivity() {
 
         ConnectToDevice(this).execute()
 
-        testsignalbutton.setOnClickListener { sendCommand("a") }
+        testsignalbutton.setOnClickListener { sendCommand("uio all") }
         disconnectbutton.setOnClickListener { disconnect() }
     }
 
