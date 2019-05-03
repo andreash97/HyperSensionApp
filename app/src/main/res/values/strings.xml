@@ -9,4 +9,7 @@
     <string name="devicestatus">On body</string>
     <string name="testsignaltext">Verifisere signal</string>
     <string name="refresh">Oppdater</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
