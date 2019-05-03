@@ -42,18 +42,20 @@ class SelectDeviceActivity : AppCompatActivity() {
 
     private fun pairedDeviceList() {
         m_pairedDevices = m_bluetoothAdapter!!.bondedDevices
-        val list : ArrayList<BluetoothDevice> = ArrayList()
+        val list : ArrayList<BluetoothDevice> = ArrayList() //
+        val listOfNames : ArrayList<String> = ArrayList()
 
         if (!m_pairedDevices.isEmpty()) {
             for (device: BluetoothDevice in m_pairedDevices) {
                 list.add(device)
-                Log.i("device", ""+device)
+                listOfNames.add(device.name)
+                Log.i("device", ""+device.name)
             }
         } else {
             toast("Ingen parrede enheter funnet")
         }
 
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, list)
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listOfNames)
         select_device_list.adapter = adapter
         select_device_list.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             val device: BluetoothDevice = list[position]
@@ -62,7 +64,10 @@ class SelectDeviceActivity : AppCompatActivity() {
             intent.putExtra(EXTRA_ADDRESS, address)
             startActivity(intent)
         }
+
+
     }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

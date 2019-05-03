@@ -20,11 +20,13 @@
 
     <Button
             android:id="@+id/select_device_refresh"
-            android:layout_width="0dp"
+            android:layout_width="366dp"
             android:layout_height="wrap_content"
             android:text="@string/refresh"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="20dp"
-            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"/>
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"/>
 
 </android.support.constraint.ConstraintLayout>
