@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <android.support.constraint.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -26,17 +26,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@color/colorPrimary" android:textSize="30sp" android:textStyle="bold"/>
-    <Button
+            android:background="@color/colorPrimary" android:textSize="30sp" android:textStyle="bold"
+            android:textColor="#FFFFFF"/>
+
+
+    <ImageButton
             android:id="@+id/infobutton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp" android:layout_marginTop="8dp"
+            android:layout_width="166dp"
+            android:layout_height="141dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/connectbutton"/>
-    <FrameLayout
+            app:layout_constraintBottom_toTopOf="@+id/connectbutton" android:contentDescription="@string/app_name"
+            android:src="@mipmap/ic_launcher_foreground"
+            android:scaleType="centerInside" android:scaleX="1.8" android:scaleY="1.8" android:background="#00FFFFFF"
+            app:layout_constraintHorizontal_bias="0.118" app:layout_constraintVertical_bias="0.077"/>
+              <FrameLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
