@@ -5,7 +5,8 @@
              android:layout_height="match_parent"
              tools:context=".Fragments.testsignal">
     <ImageView
-            android:src="@mipmap/ic_launcher_foreground"
-            android:layout_width="331dp"
-            android:layout_height="350dp" android:id="@+id/imageView" android:contentDescription="infobutton"/>
+            android:src="@drawable/FIG_1time"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:id="@+id/imageView2" android:scaleType="centerInside"
+    />
 </FrameLayout>
