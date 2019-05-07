@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity(), info.OnFragmentInteractionListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Infobutton is a image button that opens up info fragment when pushed
         infobutton.setOnClickListener {
             supportFragmentManager
                 .beginTransaction()
@@ -30,7 +31,7 @@ class MainActivity : AppCompatActivity(), info.OnFragmentInteractionListener {
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .commit()
         }
-
+        // connectbutton is used to go from mainactivity to selectdeviceactivity on click
         connectbutton.setOnClickListener {
             val intentconnect = Intent(this, SelectDeviceActivity::class.java)
             startActivity(intentconnect)

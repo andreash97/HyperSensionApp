@@ -10,8 +10,6 @@ import android.view.ViewGroup
 
 import com.example.hypersensionapp.R
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
 
 /**
@@ -24,7 +22,6 @@ import com.example.hypersensionapp.R
  *
  */
 class testsignal : Fragment() {
-    // TODO: Rename and change types of parameters
     private var listener: OnFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +39,7 @@ class testsignal : Fragment() {
         return inflater.inflate(R.layout.fragment_testsignal, container, false)
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
+
     fun onButtonPressed(uri: Uri) {
         listener?.onFragmentInteraction(uri)
     }
@@ -73,20 +70,12 @@ class testsignal : Fragment() {
      * for more information.
      */
     interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
+
         fun onFragmentInteraction(uri: Uri)
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment testsignal.
-         */
-        // TODO: Rename and change types and number of parameters
+
         @JvmStatic
         fun newInstance(): testsignal {
             val fragment = testsignal()
