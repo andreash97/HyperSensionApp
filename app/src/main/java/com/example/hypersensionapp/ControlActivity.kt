@@ -132,7 +132,7 @@ class ControlActivity: AppCompatActivity(), testsignal.OnFragmentInteractionList
 
         override fun onPreExecute() {
             super.onPreExecute()
-            m_progress = ProgressDialog.show(context, "Connecting...", "please wait")
+            m_progress = ProgressDialog.show(context, "Kobler til...", "venligst vent")
         }
 
         override fun doInBackground(vararg p0: Void?): String? {
