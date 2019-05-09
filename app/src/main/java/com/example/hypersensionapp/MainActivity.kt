@@ -3,21 +3,19 @@ package com.example.hypersensionapp
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.support.design.widget.Snackbar
+import android.support.v4.app.ActivityCompat
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
-import com.example.hypersensionapp.Fragments.info
+import com.example.hypersensionapp.Fragments.InfoFragment
 
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 
-class MainActivity : AppCompatActivity(), info.OnFragmentInteractionListener {
+class MainActivity : AppCompatActivity(), InfoFragment.OnFragmentInteractionListener {
 
-    lateinit var infofragment:info
+    lateinit var infofragment:InfoFragment
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -35,13 +33,18 @@ class MainActivity : AppCompatActivity(), info.OnFragmentInteractionListener {
         connectbutton.setOnClickListener {
             val intentconnect = Intent(this, SelectDeviceActivity::class.java)
             startActivity(intentconnect)
+
         }
 
 
-        infofragment = info.newInstance()
+        infofragment = InfoFragment.newInstance()
 
     }
 
+// //  closes application when pressing backbutton from MainActivity
+    override fun onBackPressed() {
+        ActivityCompat.finishAffinity(this)
+    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.

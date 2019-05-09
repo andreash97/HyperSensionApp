@@ -7,8 +7,6 @@ import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothSocket
 import android.content.Context
 import android.content.Intent
-import android.graphics.BitmapFactory
-import android.graphics.Color
 import android.net.Uri
 import android.os.AsyncTask
 import android.os.Build
@@ -16,12 +14,12 @@ import android.os.Bundle
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import com.example.hypersensionapp.Fragments.testsignal
+import com.example.hypersensionapp.Fragments.TestsignalFragment
 import kotlinx.android.synthetic.main.connected.*
 import java.io.IOException
 import java.util.*
 
-class ControlActivity: AppCompatActivity(), testsignal.OnFragmentInteractionListener {
+class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInteractionListener {
     companion object {
         var m_myUUID: UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
         var m_bluetoothSocket: BluetoothSocket? = null
@@ -32,7 +30,7 @@ class ControlActivity: AppCompatActivity(), testsignal.OnFragmentInteractionList
 
     }
 
-    lateinit var testsignalfragment: testsignal
+    lateinit var testsignalfragment: TestsignalFragment
     lateinit var notificationManager: NotificationManager
     lateinit var notificationChannel: NotificationChannel
     lateinit var builder: Notification.Builder
@@ -86,7 +84,7 @@ class ControlActivity: AppCompatActivity(), testsignal.OnFragmentInteractionList
         disconnectbutton.setOnClickListener {
             disconnect()
         }
-        testsignalfragment = testsignal.newInstance()
+        testsignalfragment = TestsignalFragment.newInstance()
     }
 
     override fun onBackPressed() {

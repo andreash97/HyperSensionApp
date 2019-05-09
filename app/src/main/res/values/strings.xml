@@ -10,12 +10,24 @@
     <string name="testsignaltext">Verifisere signal</string>
     <string name="refresh">Oppdater</string>
     <string name="infotittle">Guide for målinger med IsensU-enheten</string>
-    <string name="infotekst1">1 Skru på IsensU-enheten ved å trykke på PÅ knappen i 3 sekunder til den grønne lysdioden slukker.</string>
-    <string name="infotekst2">2 A)Rens pasientens hud der elektroder og IsenseU-enheten skal festes. B) Fest de tre elektrodene som vist på figuren til høyre. c) Fest IsenseU-enheten på pasienten ved å benytte belte. Fukt huden under elektrodene på beltet /string </string>
-    <string name="infotekst3">3 Monter elektrodeledningene til IsensU-enheten og deretter til hver av de tre elektrodene. Bruk fargekodene på figuren ovenfor for rett plassering</string>
-    <string name="infotekst4">4 Kontroller at IsenseU-enheten er klar for måling, Den grønne lysdioden skal blinke hvert 3. sekund</string>
+    <string name="infotekst1">1 Skru på IsensU-enheten ved å trykke på PÅ knappen i 3 sekunder til den grønne lysdioden
+        slukker.
+    </string>
+    <string name="infotekst2">2 A)Rens pasientens hud der elektroder og IsenseU-enheten skal festes. B) Fest de tre
+        elektrodene som vist på figuren til høyre. c) Fest IsenseU-enheten på pasienten ved å benytte belte. Fukt huden
+        under elektrodene på beltet /string
+    </string>
+    <string name="infotekst3">3 Monter elektrodeledningene til IsensU-enheten og deretter til hver av de tre
+        elektrodene. Bruk fargekodene på figuren ovenfor for rett plassering
+    </string>
+    <string name="infotekst4">4 Kontroller at IsenseU-enheten er klar for måling, Den grønne lysdioden skal blinke hvert
+        3. sekund
+    </string>
     <string name="infotekst5">5 Start en måling ved å dobbeltpresse på knappen</string>
     <string name="infotekst6">6 Under måling gir den grønne lysdioden double blinkk hvert 3.sekund</string>
     <string name="infotekst7">7 Avslutt måling ved å dobbelt trykke som beskrevet på punkt 5</string>
     <string name="infotekst8">Guide for målinger med IsensU-enheten</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

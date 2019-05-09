@@ -12,18 +12,16 @@ import com.example.hypersensionapp.R
 
 
 
-
 /**
  * A simple [Fragment] subclass.
  * Activities that contain this fragment must implement the
-* [info.OnFragmentInteractionListener] interface
+ * [testsignal.OnFragmentInteractionListener] interface
  * to handle interaction events.
- * Use the [info.newInstance] factory method to
+ * Use the [testsignal.newInstance] factory method to
  * create an instance of this fragment.
  *
  */
-class info : Fragment() {
-
+class TestsignalFragment : Fragment() {
     private var listener: OnFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,15 +31,12 @@ class info : Fragment() {
         }
     }
 
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_info, container, false)
+        return inflater.inflate(R.layout.fragment_testsignal, container, false)
     }
 
 
@@ -82,9 +77,8 @@ class info : Fragment() {
     companion object {
 
         @JvmStatic
-
-        fun newInstance(): info {
-            val fragment = info()
+        fun newInstance(): TestsignalFragment {
+            val fragment = TestsignalFragment()
             val args = Bundle()
             return fragment
         }

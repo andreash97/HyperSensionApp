@@ -63,6 +63,7 @@ class SelectDeviceActivity : AppCompatActivity() {
             val intent = Intent(this, ControlActivity::class.java)
             intent.putExtra(EXTRA_ADDRESS, address)
             startActivity(intent)
+
         }
 
 
