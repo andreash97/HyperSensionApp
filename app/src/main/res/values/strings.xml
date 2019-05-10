@@ -28,6 +28,8 @@
     <string name="infotekst7">7 Avslutt måling ved å dobbelt trykke som beskrevet på punkt 5</string>
     <string name="infotekst8">Guide for målinger med IsensU-enheten</string>
 
+    <string name="backbutton">backbutton</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

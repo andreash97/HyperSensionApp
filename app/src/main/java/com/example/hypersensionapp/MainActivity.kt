@@ -1,6 +1,7 @@
 package com.example.hypersensionapp
 
 import android.content.Intent
+import android.icu.text.IDNA
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
@@ -43,7 +44,11 @@ class MainActivity : AppCompatActivity(), InfoFragment.OnFragmentInteractionList
 
 // //  closes application when pressing backbutton from MainActivity
     override fun onBackPressed() {
-        ActivityCompat.finishAffinity(this)
+        if(infofragment.isVisible) {
+            super.onBackPressed()
+        } else {
+            ActivityCompat.finishAffinity(this)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

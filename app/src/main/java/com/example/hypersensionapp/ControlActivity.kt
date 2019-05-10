@@ -14,8 +14,10 @@ import android.os.Bundle
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.widget.Button
 import com.example.hypersensionapp.Fragments.TestsignalFragment
 import kotlinx.android.synthetic.main.connected.*
+import kotlinx.android.synthetic.main.fragment_testsignal.*
 import java.io.IOException
 import java.util.*
 
@@ -84,8 +86,18 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
         disconnectbutton.setOnClickListener {
             disconnect()
         }
+
+
+        //backbutton.setOnClickListener {
+            //super.onBackPressed()
+        //}
+
+
+
         testsignalfragment = TestsignalFragment.newInstance()
     }
+
+
 
     override fun onBackPressed() {
         if(testsignalfragment.isVisible) {
