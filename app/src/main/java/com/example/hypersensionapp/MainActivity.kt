@@ -1,7 +1,6 @@
 package com.example.hypersensionapp
 
 import android.content.Intent
-import android.icu.text.IDNA
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
@@ -25,7 +24,7 @@ class MainActivity : AppCompatActivity(), InfoFragment.OnFragmentInteractionList
         infobutton.setOnClickListener {
             supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.container, infofragment)
+                .replace(R.id.container1, infofragment)
                 .addToBackStack(infofragment.toString())
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .commit()

@@ -12,10 +12,15 @@
     <string name="infotittle">Guide for målinger med IsensU-enheten</string>
     <string name="infotekst1">1 Skru på IsensU-enheten ved å trykke på PÅ knappen i 3 sekunder til den grønne lysdioden
         slukker.
+        \n\nLysdiodene fortsetter å blinke i en oppstartssekvens beskrevet sammen med de andre lyssekvensene nedenfor
+
     </string>
-    <string name="infotekst2">2 A)Rens pasientens hud der elektroder og IsenseU-enheten skal festes. B) Fest de tre
-        elektrodene som vist på figuren til høyre. c) Fest IsenseU-enheten på pasienten ved å benytte belte. Fukt huden
-        under elektrodene på beltet /string
+    <string name="infotekst2">2
+        A) <strong>Rens pasientens</strong> hud der elektroder og IsenseU-enheten skal festes.
+        \nB) Fest de tre
+        elektrodene som vist på figuren under denne teksten.
+        \nc) Fest IsenseU-enheten på pasienten ved å benytte belte. Fukt huden
+        under elektrodene på beltet
     </string>
     <string name="infotekst3">3 Monter elektrodeledningene til IsensU-enheten og deretter til hver av de tre
         elektrodene. Bruk fargekodene på figuren ovenfor for rett plassering
@@ -26,10 +31,14 @@
     <string name="infotekst5">5 Start en måling ved å dobbeltpresse på knappen</string>
     <string name="infotekst6">6 Under måling gir den grønne lysdioden double blinkk hvert 3.sekund</string>
     <string name="infotekst7">7 Avslutt måling ved å dobbelt trykke som beskrevet på punkt 5</string>
-    <string name="infotekst8">Guide for målinger med IsensU-enheten</string>
+    <string name="infotekst8">8 Daglig avslutning: Lagring av måledata og ladning
+        \nA) Lagring av måledata: Koble IsenseU-Enheten til Datek-HUB ved å bruke USB-ladekabelen. La enheten være koblet til Datek-HUB inntil grønn lysdiode på Datek-HUB lyser.
+        \nB) Skru av enheten ved å holde knappene inne i 3 sekunder som beskrevet i punk 1
+    Koble IsenseU-enheten til strømforsyning via USB-ladekabel</string>
 
     <string name="backbutton">backbutton</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="advancedbutton">avansert</string>
+    <string name="title_activity_advanced">AdvancedActivity</string>
 </resources>

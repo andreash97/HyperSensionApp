@@ -14,10 +14,8 @@ import android.os.Bundle
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import android.widget.Button
 import com.example.hypersensionapp.Fragments.TestsignalFragment
 import kotlinx.android.synthetic.main.connected.*
-import kotlinx.android.synthetic.main.fragment_testsignal.*
 import java.io.IOException
 import java.util.*
 
@@ -47,7 +45,7 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
         ConnectToDevice(this).execute()
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-        {
+        //{
             //testsignalbutton.setOnClickListener { // warning https://www.youtube.com/watch?v=Fo7WksYMlCU
             //            val intent = Intent(this, ControlActivity::class.java)
             //            val pendingIntent = PendingIntent.getActivity(this, 0, intent,PendingIntent.FLAG_UPDATE_CURRENT)
@@ -74,27 +72,31 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
             //                   .setAutoCancel(true)
             //           }
             //            notificationManager.notify(1234,builder.build())
-        }
+        //}
         testsignalbutton.setOnClickListener {
+
             supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.container, testsignalfragment)
+                .replace(R.id.container1, testsignalfragment)
                 .addToBackStack(testsignalfragment.toString())
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .commit()
+        }
+        advancedbutton.setOnClickListener {
+
         }
         disconnectbutton.setOnClickListener {
             disconnect()
         }
 
 
-        //backbutton.setOnClickListener {
-            //super.onBackPressed()
-        //}
+
 
 
 
         testsignalfragment = TestsignalFragment.newInstance()
+
+
     }
 
 
