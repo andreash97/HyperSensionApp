@@ -35,10 +35,16 @@
         \nA) Lagring av måledata: Koble IsenseU-Enheten til Datek-HUB ved å bruke USB-ladekabelen. La enheten være koblet til Datek-HUB inntil grønn lysdiode på Datek-HUB lyser.
         \nB) Skru av enheten ved å holde knappene inne i 3 sekunder som beskrevet i punk 1
     Koble IsenseU-enheten til strømforsyning via USB-ladekabel</string>
-
+    <string name="hssystem"> HyperSension systemet</string>
+    <string name="lyssekvensene"> Dette betyr de ulike lyssekvensene</string>
+    <string name="oppstartenhet"> Oppstart av enheten:</string>
+    <string name="klarto"> Klar til opptak:</string>
+    <string name="lavtbat"> Lavt batteri:</string>
+    <string name="opptk"> Opptak pågår:</string>
+    <string name="lading"> Lading pågår:</string>
+    <string name="opptakav"> Opptakk avbrutt</string>
     <string name="backbutton">backbutton</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="advancedbutton">avansert</string>
     <string name="title_activity_advanced">AdvancedActivity</string>
 </resources>
