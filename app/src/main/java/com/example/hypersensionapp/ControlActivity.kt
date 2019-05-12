@@ -82,9 +82,7 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .commit()
         }
-        advancedbutton.setOnClickListener {
 
-        }
         disconnectbutton.setOnClickListener {
             disconnect()
         }

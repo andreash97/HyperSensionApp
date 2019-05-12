@@ -19,7 +19,6 @@ class SelectDeviceActivity : AppCompatActivity() {
     private var m_bluetoothAdapter: BluetoothAdapter? = null
     private lateinit var m_pairedDevices: Set<BluetoothDevice>
     private val REQUEST_ENABLE_BLUETOOTH = 1
-    var advancedmode = false
     companion object {
         val EXTRA_ADDRESS: String = "Device_address"
     }
@@ -66,7 +65,7 @@ class SelectDeviceActivity : AppCompatActivity() {
             val address: String = device.address
             // checks if advanced mode is selected or not,
             if (advanced.isChecked) {
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, AdvancedActivity::class.java)
                 intent.putExtra(EXTRA_ADDRESS, address)
                 startActivity(intent)
             } else {

@@ -7,13 +7,13 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 
 import com.example.hypersensionapp.R
 
 
 
-class TestsignalFragment : Fragment() {
+
+class AgrafFragment : Fragment() {
     private var listener: OnFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,11 +25,11 @@ class TestsignalFragment : Fragment() {
     }
 
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
 
 
-        return inflater.inflate(R.layout.fragment_testsignal, container, false)
+        return inflater.inflate(R.layout.fragment_agraf, container, false)
     }
 
 
@@ -51,17 +51,7 @@ class TestsignalFragment : Fragment() {
         listener = null
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson [Communicating with Other Fragments]
-     * (http://developer.android.com/training/basics/fragments/communicating.html)
-     * for more information.
-     */
+
     interface OnFragmentInteractionListener {
 
         fun onFragmentInteraction(uri: Uri)
@@ -70,8 +60,8 @@ class TestsignalFragment : Fragment() {
     companion object {
 
         @JvmStatic
-        fun newInstance(): TestsignalFragment {
-            val fragment = TestsignalFragment()
+        fun newInstance(): AgrafFragment {
+            val fragment = AgrafFragment()
             val args = Bundle()
             return fragment
 
