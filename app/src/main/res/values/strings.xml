@@ -32,19 +32,20 @@
     <string name="infotekst6">6 Under måling gir den grønne lysdioden double blinkk hvert 3.sekund</string>
     <string name="infotekst7">7 Avslutt måling ved å dobbelt trykke som beskrevet på punkt 5</string>
     <string name="infotekst8">8 Daglig avslutning: Lagring av måledata og ladning
-        \nA) Lagring av måledata: Koble IsenseU-Enheten til Datek-HUB ved å bruke USB-ladekabelen. La enheten være koblet til Datek-HUB inntil grønn lysdiode på Datek-HUB lyser.
+        \nA) Lagring av måledata: Koble IsenseU-Enheten til Datek-HUB ved å bruke USB-ladekabelen. La enheten være
+        koblet til Datek-HUB inntil grønn lysdiode på Datek-HUB lyser.
         \nB) Skru av enheten ved å holde knappene inne i 3 sekunder som beskrevet i punk 1
-    Koble IsenseU-enheten til strømforsyning via USB-ladekabel</string>
-    <string name="hssystem"> HyperSension systemet</string>
-    <string name="lyssekvensene"> Dette betyr de ulike lyssekvensene</string>
-    <string name="oppstartenhet"> Oppstart av enheten:</string>
-    <string name="klarto"> Klar til opptak:</string>
-    <string name="lavtbat"> Lavt batteri:</string>
-    <string name="opptk"> Opptak pågår:</string>
-    <string name="lading"> Lading pågår:</string>
-    <string name="opptakav"> Opptakk avbrutt</string>
+        Koble IsenseU-enheten til strømforsyning via USB-ladekabel
+    </string>
+    <string name="hssystem">HyperSension systemet</string>
+    <string name="lyssekvensene">Dette betyr de ulike lyssekvensene</string>
+    <string name="oppstartenhet">Oppstart av enheten:</string>
+    <string name="klarto">Klar til opptak:</string>
+    <string name="lavtbat">Lavt batteri:</string>
+    <string name="opptk">Opptak pågår:</string>
+    <string name="lading">Lading pågår:</string>
+    <string name="opptakav">Opptakk avbrutt</string>
     <string name="backbutton">backbutton</string>
-
-    <string name="advancedbutton">avansert</string>
+    <string name="advancedbutton">Avansert</string>
     <string name="title_activity_advanced">AdvancedActivity</string>
 </resources>

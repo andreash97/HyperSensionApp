@@ -9,6 +9,8 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Switch
+import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.select_device_layout.*
 import org.jetbrains.anko.toast
 
@@ -17,7 +19,7 @@ class SelectDeviceActivity : AppCompatActivity() {
     private var m_bluetoothAdapter: BluetoothAdapter? = null
     private lateinit var m_pairedDevices: Set<BluetoothDevice>
     private val REQUEST_ENABLE_BLUETOOTH = 1
-
+    var advancedmode = false
     companion object {
         val EXTRA_ADDRESS: String = "Device_address"
     }
@@ -37,6 +39,8 @@ class SelectDeviceActivity : AppCompatActivity() {
         }
 
         select_device_refresh.setOnClickListener{ pairedDeviceList() }
+
+
 
     }
 
@@ -60,9 +64,27 @@ class SelectDeviceActivity : AppCompatActivity() {
         select_device_list.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             val device: BluetoothDevice = list[position]
             val address: String = device.address
-            val intent = Intent(this, ControlActivity::class.java)
-            intent.putExtra(EXTRA_ADDRESS, address)
-            startActivity(intent)
+            // checks if advanced mode is selected or not,
+            if (advanced.isChecked) {
+                val intent = Intent(this, MainActivity::class.java)
+                intent.putExtra(EXTRA_ADDRESS, address)
+                startActivity(intent)
+            } else {
+                val intent = Intent(this, ControlActivity::class.java)
+                intent.putExtra(EXTRA_ADDRESS, address)
+                startActivity(intent)
+            }
+
+
+            //  if (advanced.isChecked) {
+            //                val intent = Intent(this, ControlActivity::class.java)
+            //                intent.putExtra(EXTRA_ADDRESS, address)
+            //                startActivity(intent)
+            //            } else {
+            //                val intent = Intent(this, MainActivity::class.java)
+            //                intent.putExtra(EXTRA_ADDRESS, address)
+            //                startActivity(intent)
+            //            }
 
         }
 
