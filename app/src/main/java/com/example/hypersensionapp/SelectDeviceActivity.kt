@@ -75,15 +75,6 @@ class SelectDeviceActivity : AppCompatActivity() {
             }
 
 
-            //  if (advanced.isChecked) {
-            //                val intent = Intent(this, ControlActivity::class.java)
-            //                intent.putExtra(EXTRA_ADDRESS, address)
-            //                startActivity(intent)
-            //            } else {
-            //                val intent = Intent(this, MainActivity::class.java)
-            //                intent.putExtra(EXTRA_ADDRESS, address)
-            //                startActivity(intent)
-            //            }
 
         }
 

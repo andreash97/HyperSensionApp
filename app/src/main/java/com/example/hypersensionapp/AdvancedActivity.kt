@@ -8,10 +8,13 @@ import android.app.ProgressDialog
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothSocket
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.net.Uri
 import android.os.AsyncTask
+import android.os.BatteryManager
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -125,13 +128,24 @@ class AdvancedActivity :AppCompatActivity(), TestsignalFragment.OnFragmentIntera
         akgyfragment = AkgyFragment.newInstance()
         agraffragment = AgrafFragment.newInstance()
 
-
+        val intentFilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
+        this.registerReceiver(myBroadcastReceiver, intentFilter)
     }
 
+    // uses broadcastreciever and gets the batterystatus of the device, then displays it in activity_advanced.xml.
+    private val myBroadcastReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent) {
+            val stringBuilder = StringBuilder()
 
+            val batteryPercentage = intent.getIntExtra(BatteryManager.EXTRA_LEVEL,0)
+            stringBuilder.append("$batteryPercentage %")
+
+            batterystatus2.text = stringBuilder
+        }
+    }
 
     override fun onBackPressed() {
-        if(testsignalfragment.isVisible) {
+        if(testsignalfragment.isVisible || akgyfragment.isVisible || agraffragment.isVisible) {
             super.onBackPressed()
         } else
             disconnect()

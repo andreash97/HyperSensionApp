@@ -5,6 +5,7 @@ import android.app.*
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothSocket
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -18,6 +19,11 @@ import com.example.hypersensionapp.Fragments.TestsignalFragment
 import kotlinx.android.synthetic.main.connected.*
 import java.io.IOException
 import java.util.*
+import android.os.BatteryManager
+import android.content.IntentFilter
+
+
+
 
 class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInteractionListener {
     companion object {
@@ -36,6 +42,10 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
     lateinit var builder: Notification.Builder
     private var ChannelID = "com.example.hypersensionapp"
     private var description = "Low battery"
+
+
+
+
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -86,16 +96,28 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
         disconnectbutton.setOnClickListener {
             disconnect()
         }
+        val intentFilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
+        this.registerReceiver(myBroadcastReceiver, intentFilter)
 
-
-
-
-
-
-        testsignalfragment = TestsignalFragment.newInstance()
 
 
     }
+ // uses broadcastreciever and gets the batterystatus of the device, then displays it in connected xml.
+    private val myBroadcastReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent) {
+        val stringBuilder = StringBuilder()
+
+            val batteryPercentage = intent.getIntExtra(BatteryManager.EXTRA_LEVEL,0)
+            stringBuilder.append("$batteryPercentage %")
+
+            batterystatus.text = stringBuilder
+        }
+    }
+
+
+
+
+
 
 
 
