@@ -22,8 +22,8 @@ import java.io.IOException
 import java.util.*
 import android.os.BatteryManager
 import android.content.IntentFilter
-
-
+import android.graphics.BitmapFactory
+import android.graphics.Color
 
 
 class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInteractionListener {
@@ -56,36 +56,43 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
         setContentView(R.layout.connected)
         m_address = intent.getStringExtra(SelectDeviceActivity.EXTRA_ADDRESS)
         ConnectToDevice(this).execute()
-        notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-        //{
-            //testsignalbutton.setOnClickListener { // warning https://www.youtube.com/watch?v=Fo7WksYMlCU
-            //            val intent = Intent(this, ControlActivity::class.java)
-            //            val pendingIntent = PendingIntent.getActivity(this, 0, intent,PendingIntent.FLAG_UPDATE_CURRENT)
-            //           if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            //               notificationChannel = NotificationChannel(ChannelID, description, NotificationManager.IMPORTANCE_HIGH)
-            //               notificationChannel.enableLights(true)
-            //               notificationChannel.lightColor = Color.YELLOW
-            //               notificationChannel.enableVibration(true)
-            //               notificationManager.createNotificationChannel(notificationChannel)
-            //               builder = Notification.Builder(this,ChannelID)
-            //                   .setContentTitle("HyperSension device LOW BATTERY")
-            //                   .setContentText("Your HyperSension device is low on battery, please charge")
-            //                   .setSmallIcon(R.mipmap.ic_launcher_round)
-            //                   .setLargeIcon((BitmapFactory.decodeResource(this.resources,R.mipmap.ic_launcher)))
-            //                   .setContentIntent(pendingIntent)
-            //                   .setAutoCancel(true)
-            //           } else {
-            //               builder = Notification.Builder(this)
-            //                   .setContentTitle("HyperSension device LOW BATTERY")
-            //                   .setContentText("Your HyperSension device is low on battery, please charge")
-            //                   .setSmallIcon(R.mipmap.ic_launcher_round)
-            //                   .setLargeIcon((BitmapFactory.decodeResource(this.resources,R.mipmap.ic_launcher)))
-            //                   .setContentIntent(pendingIntent)
-            //                   .setAutoCancel(true)
-            //           }
-            //            notificationManager.notify(1234,builder.build())
-        //}
+        // Notification https://www.youtube.com/watch?v=Fo7WksYMlCU
+
+
+
+        notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            val intent = Intent(this, ControlActivity::class.java)
+            val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                notificationChannel = NotificationChannel(ChannelID, description, NotificationManager.IMPORTANCE_HIGH)
+                notificationChannel.enableLights(true)
+                notificationChannel.lightColor = Color.YELLOW
+                notificationChannel.enableVibration(true)
+                notificationManager.createNotificationChannel(notificationChannel)
+                builder = Notification.Builder(this, ChannelID)
+                    .setContentTitle("HyperSension device LOW BATTERY")
+                    .setContentText("Your HyperSension device is low on battery, please charge")
+                    .setSmallIcon(R.mipmap.ic_launcher_round)
+                    .setLargeIcon((BitmapFactory.decodeResource(this.resources, R.mipmap.ic_launcher)))
+                    .setContentIntent(pendingIntent)
+                    .setOnlyAlertOnce(true)
+                    .setAutoCancel(true)
+            } else {
+                builder = Notification.Builder(this)
+                    .setContentTitle("HyperSension device LOW BATTERY")
+                    .setContentText("Your HyperSension device is low on battery, please charge")
+                    .setSmallIcon(R.mipmap.ic_launcher_round)
+                    .setLargeIcon((BitmapFactory.decodeResource(this.resources, R.mipmap.ic_launcher)))
+                    .setContentIntent(pendingIntent)
+                    .setOnlyAlertOnce(true)
+                    .setAutoCancel(true)
+            }
+
+
+
+
+
         testsignalbutton.setOnClickListener {
 
             supportFragmentManager
@@ -101,26 +108,23 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
         }
         val intentFilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
         this.registerReceiver(myBroadcastReceiver, intentFilter)
-
-
-
+        testsignalfragment = TestsignalFragment.newInstance()
     }
  // uses broadcastreciever and gets the batterystatus of the device, then displays it in connected xml.
     private val myBroadcastReceiver = object : BroadcastReceiver() {
+        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
         override fun onReceive(context: Context?, intent: Intent) {
         val stringBuilder = StringBuilder()
 
             val batteryPercentage = intent.getIntExtra(BatteryManager.EXTRA_LEVEL,0)
             stringBuilder.append("$batteryPercentage %")
-
             batterystatus.text = stringBuilder
+
+            if (batteryPercentage == 20) {
+                notificationManager.notify(1234,builder.build())
+            }
         }
     }
-
-
-
-
-
 
 
 

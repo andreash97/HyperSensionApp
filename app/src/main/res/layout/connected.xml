@@ -24,7 +24,8 @@
                     android:background="@color/colorAccent"
                     android:textStyle="normal|bold" android:textSize="30sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                    android:textColor="#FFFFFF"/>
             <TextView
                     android:text="@string/batterystatustext"
                     android:layout_width="wrap_content"
