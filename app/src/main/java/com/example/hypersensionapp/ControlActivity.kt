@@ -22,6 +22,7 @@ import java.io.IOException
 import java.util.*
 import android.os.BatteryManager
 import android.content.IntentFilter
+import android.content.pm.ActivityInfo
 import android.graphics.BitmapFactory
 import android.graphics.Color
 
@@ -56,11 +57,7 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
         setContentView(R.layout.connected)
         m_address = intent.getStringExtra(SelectDeviceActivity.EXTRA_ADDRESS)
         ConnectToDevice(this).execute()
-
         // Notification https://www.youtube.com/watch?v=Fo7WksYMlCU
-
-
-
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             val intent = Intent(this, ControlActivity::class.java)
             val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
@@ -94,7 +91,6 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
 
 
         testsignalbutton.setOnClickListener {
-
             supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.container1, testsignalfragment)
@@ -106,11 +102,15 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
         disconnectbutton.setOnClickListener {
             disconnect()
         }
+
         val intentFilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
         this.registerReceiver(myBroadcastReceiver, intentFilter)
         testsignalfragment = TestsignalFragment.newInstance()
     }
- // uses broadcastreciever and gets the batterystatus of the device, then displays it in connected xml.
+
+
+
+// uses broadcastreciever and gets the batterystatus of the device, then displays it in connected xml.
     private val myBroadcastReceiver = object : BroadcastReceiver() {
         @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
         override fun onReceive(context: Context?, intent: Intent) {
@@ -130,6 +130,7 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
 
     override fun onBackPressed() {
         if(testsignalfragment.isVisible) {
+            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
             super.onBackPressed()
         } else
             disconnect()

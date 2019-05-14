@@ -17,9 +17,12 @@
         <activity
                 android:name=".AdvancedActivity"
                 android:label="@string/title_activity_advanced"
+                android:screenOrientation="portrait"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".SelectDeviceActivity">
+        <activity
+                android:name=".SelectDeviceActivity"
+                android:screenOrientation="portrait">
         </activity>
         <activity
                 android:name=".MainActivity"

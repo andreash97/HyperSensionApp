@@ -3,10 +3,26 @@
              xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context=".Fragments.TestsignalFragment">
-    <ImageView
-            android:src="@drawable/figursig"
+             tools:context=".Fragments.TestsignalFragment" android:orientation="vertical">
+    <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" android:id="@+id/imageView2" android:scaleType="center"
-    />
+            android:layout_height="match_parent">
+
+        <ImageView
+                android:src="@drawable/figursig"
+                android:layout_width="364dp"
+                android:layout_height="267dp" android:id="@+id/imageView2" android:scaleType="centerCrop"
+                android:rotationY="90"
+                android:rotation="90" tools:layout_editor_absoluteY="184dp"
+                app:layout_constraintStart_toStartOf="parent"/>
+        <TextView
+                android:text="@string/vsigtekst"
+                android:layout_width="548dp"
+                android:layout_height="201dp"
+                android:id="@+id/vsigtekst"
+                android:textSize="25dp"
+                android:rotation="90"
+                app:layout_constraintTop_toBottomOf="@+id/imageView2"
+                app:layout_constraintEnd_toEndOf="parent"/>
+    </android.support.constraint.ConstraintLayout>
 </FrameLayout>
