@@ -4,11 +4,12 @@
     <string name="connect">Koble til</string>
     <string name="disconnect">Koble fra</string>
     <string name="batterystatustext">Batteri status</string>
-    <string name="hrtext">Hjerterate</string>
+    <string name="hrtext">Hjerterate:</string>
     <string name="devicestatustext">Status på enhet:</string>
     <string name="devicestatus">On body</string>
     <string name="testsignaltext">Verifisere signal</string>
     <string name="refresh">Oppdater</string>
+    <string name="batstatex">Batteri: 200 %</string>
     <string name="infotittle">Guide for målinger med IsensU-enheten</string>
     <string name="infotekst1">1 Skru på IsensU-enheten ved å trykke på PÅ knappen i 3 sekunder til den grønne lysdioden
         slukker.

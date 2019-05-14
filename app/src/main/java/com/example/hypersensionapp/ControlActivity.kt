@@ -74,7 +74,7 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
                     .setLargeIcon((BitmapFactory.decodeResource(this.resources, R.mipmap.ic_launcher)))
                     .setContentIntent(pendingIntent)
                     .setOnlyAlertOnce(true)
-                    .setAutoCancel(true)
+                    .setOngoing(true)
             } else {
                 builder = Notification.Builder(this)
                     .setContentTitle("HyperSension device LOW BATTERY")
@@ -83,7 +83,7 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
                     .setLargeIcon((BitmapFactory.decodeResource(this.resources, R.mipmap.ic_launcher)))
                     .setContentIntent(pendingIntent)
                     .setOnlyAlertOnce(true)
-                    .setAutoCancel(true)
+                    .setOngoing(true)
             }
 
 
@@ -117,13 +117,37 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
         val stringBuilder = StringBuilder()
 
             val batteryPercentage = intent.getIntExtra(BatteryManager.EXTRA_LEVEL,0)
-            stringBuilder.append("$batteryPercentage %")
+            stringBuilder.append("Batteri: $batteryPercentage %")
             batterystatus.text = stringBuilder
+            // change battery picture based on how much battery is left
+            if (batteryPercentage in 0..19) {
+                batim.setImageResource(R.drawable.battery_25)
+            }
+            if (batteryPercentage in 20..39) {
+                batim.setImageResource(R.drawable.battery_50)
+            }
+            if (batteryPercentage in 40..84) {
+                batim.setImageResource(R.drawable.battery_75)
+            }
+            if (batteryPercentage in 85..100) {
+                batim.setImageResource(R.drawable.battery_100)
+            }
 
-            if (batteryPercentage == 20) {
+
+            // If statements for notification on low battery
+            if (batteryPercentage <= 99) {
                 notificationManager.notify(1234,builder.build())
             }
+            if(batteryPercentage > 99) {
+               notificationManager.cancelAll()
+            }
+
         }
+    }
+    // unreg reciver on destroy
+    override fun onDestroy() {
+        unregisterReceiver(myBroadcastReceiver)
+        super.onDestroy()
     }
 
 

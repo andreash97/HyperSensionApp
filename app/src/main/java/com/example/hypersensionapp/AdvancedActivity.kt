@@ -75,7 +75,7 @@ class AdvancedActivity :AppCompatActivity(), TestsignalFragment.OnFragmentIntera
                 .setLargeIcon((BitmapFactory.decodeResource(this.resources, R.mipmap.ic_launcher)))
                 .setContentIntent(pendingIntent)
                 .setOnlyAlertOnce(true)
-                .setAutoCancel(true)
+                .setOngoing(true)
         } else {
             builder = Notification.Builder(this)
                 .setContentTitle("HyperSension device LOW BATTERY")
@@ -84,7 +84,7 @@ class AdvancedActivity :AppCompatActivity(), TestsignalFragment.OnFragmentIntera
                 .setLargeIcon((BitmapFactory.decodeResource(this.resources, R.mipmap.ic_launcher)))
                 .setContentIntent(pendingIntent)
                 .setOnlyAlertOnce(true)
-                .setAutoCancel(true)
+                .setOngoing(true)
         }
 
         testsignalbutton.setOnClickListener {
@@ -133,16 +133,45 @@ class AdvancedActivity :AppCompatActivity(), TestsignalFragment.OnFragmentIntera
 
     }
 
-    // uses broadcastreciever and gets the batterystatus of the device, then displays it in activity_advanced.xml.
+    // uses broadcastreciever and gets the batterystatus of the device, then displays it in activity_advanced.xml. https://www.youtube.com/watch?v=IekM_vjIiL0
     private val myBroadcastReceiver = object : BroadcastReceiver() {
+        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
         override fun onReceive(context: Context?, intent: Intent) {
             val stringBuilder = StringBuilder()
 
             val batteryPercentage = intent.getIntExtra(BatteryManager.EXTRA_LEVEL,0)
-            stringBuilder.append("$batteryPercentage %")
-
+            stringBuilder.append("Batteri: $batteryPercentage %")
             batterystatus2.text = stringBuilder
+            // change battery picture based on how much battery is left
+            if (batteryPercentage in 0..19) {
+                batim2.setImageResource(R.drawable.battery_25)
+            }
+            if (batteryPercentage in 20..39) {
+                batim2.setImageResource(R.drawable.battery_50)
+            }
+            if (batteryPercentage in 40..84) {
+                batim2.setImageResource(R.drawable.battery_75)
+            }
+            if (batteryPercentage in 85..100) {
+                batim2.setImageResource(R.drawable.battery_100)
+            }
+
+
+            // If statements for notification on low battery
+            if (batteryPercentage <= 20) {
+                notificationManager.notify(1234,builder.build())
+            }
+            if(batteryPercentage > 20) {
+                notificationManager.cancelAll()
+            }
+
         }
+
+    }
+// unreg reciver on destroy
+    override fun onDestroy() {
+        unregisterReceiver(myBroadcastReceiver)
+        super.onDestroy()
     }
 
     override fun onBackPressed() {
