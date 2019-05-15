@@ -12,16 +12,6 @@ import com.example.hypersensionapp.R
 
 
 
-
-/**
- * A simple [Fragment] subclass.
- * Activities that contain this fragment must implement the
- * [info.OnFragmentInteractionListener] interface
- * to handle interaction events.
- * Use the [info.newInstance] factory method to
- * create an instance of this fragment.
- *
- */
 class InfoFragment : Fragment() {
 
     private var listener: OnFragmentInteractionListener? = null
@@ -29,11 +19,8 @@ class InfoFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-
         }
     }
-
-
 
 
     override fun onCreateView(
@@ -45,10 +32,6 @@ class InfoFragment : Fragment() {
     }
 
 
-    fun onButtonPressed(uri: Uri) {
-        listener?.onFragmentInteraction(uri)
-    }
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is OnFragmentInteractionListener) {
@@ -58,35 +41,20 @@ class InfoFragment : Fragment() {
         }
     }
 
+
     override fun onDetach() {
         super.onDetach()
         listener = null
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson [Communicating with Other Fragments]
-     * (http://developer.android.com/training/basics/fragments/communicating.html)
-     * for more information.
-     */
-    interface OnFragmentInteractionListener {
 
+    interface OnFragmentInteractionListener {
         fun onFragmentInteraction(uri: Uri)
     }
-
     companion object {
-
         @JvmStatic
-
         fun newInstance(): InfoFragment {
-            val fragment = InfoFragment()
-            val args = Bundle()
-            return fragment
+            return InfoFragment()
         }
     }
 }

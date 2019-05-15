@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity(), InfoFragment.OnFragmentInteractionList
     lateinit var infofragment:InfoFragment
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // This will display the xml file called activity_main, which will be the first thing you see when opening the app
         setContentView(R.layout.activity_main)
 
 
@@ -30,19 +31,20 @@ class MainActivity : AppCompatActivity(), InfoFragment.OnFragmentInteractionList
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .commit()
         }
-        // connectbutton is used to go from mainactivity to selectdeviceactivity on click
+
+
+        // Connectbutton is used to go from mainactivity to selectdeviceactivity on click
         connectbutton.setOnClickListener {
             val intentconnect = Intent(this, SelectDeviceActivity::class.java)
             startActivity(intentconnect)
-
         }
 
 
         infofragment = InfoFragment.newInstance()
-
     }
 
-// //  closes application when pressing backbutton from MainActivity
+
+// //  Closes application when pressing backbutton from MainActivity when fragment is not open
     override fun onBackPressed() {
         if(infofragment.isVisible) {
             super.onBackPressed()
@@ -51,21 +53,6 @@ class MainActivity : AppCompatActivity(), InfoFragment.OnFragmentInteractionList
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
 
     override fun onFragmentInteraction(uri: Uri) {
         Log.d("Info button", "info is comming")

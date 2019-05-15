@@ -40,6 +40,7 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
         val duration = Toast.LENGTH_LONG
     }
 
+
     lateinit var testsignalfragment: TestsignalFragment
     lateinit var notificationManager: NotificationManager
     lateinit var notificationChannel: NotificationChannel
@@ -48,19 +49,20 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
     private var description = "Low battery"
 
 
-
-
-
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.connected)
         m_address = intent.getStringExtra(SelectDeviceActivity.EXTRA_ADDRESS)
         ConnectToDevice(this).execute()
+
+
         // Notification https://www.youtube.com/watch?v=Fo7WksYMlCU
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             val intent = Intent(this, ControlActivity::class.java)
             val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+
+
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 notificationChannel = NotificationChannel(ChannelID, description, NotificationManager.IMPORTANCE_HIGH)
                 notificationChannel.enableLights(true)
@@ -87,9 +89,7 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
             }
 
 
-
-
-
+        // testsignalbutton changes the orientation to landscape and opens testsignalfragment
         testsignalbutton.setOnClickListener {
             this.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
             supportFragmentManager
@@ -100,25 +100,28 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
                 .commit()
         }
 
+
         disconnectbutton.setOnClickListener {
             disconnect()
         }
+
+
         val intentFilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
         this.registerReceiver(myBroadcastReceiver, intentFilter)
         testsignalfragment = TestsignalFragment.newInstance()
     }
 
 
-
 // uses broadcastreciever and gets the batterystatus of the device, then displays it in connected xml.
     private val myBroadcastReceiver = object : BroadcastReceiver() {
         @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
         override fun onReceive(context: Context?, intent: Intent) {
-        val stringBuilder = StringBuilder()
-
+            val stringBuilder = StringBuilder()
             val batteryPercentage = intent.getIntExtra(BatteryManager.EXTRA_LEVEL,0)
             stringBuilder.append("Batteri: $batteryPercentage %")
             batterystatus.text = stringBuilder
+
+
             // change battery picture based on how much battery is left
             if (batteryPercentage in 0..19) {
                 batim.setImageResource(R.drawable.battery_25)
@@ -141,10 +144,11 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
             if(batteryPercentage > 99) {
                notificationManager.cancelAll()
             }
-
         }
     }
-    // unreg reciver on destroy
+
+
+    // Unregister receiver on destroy and removes all notifications made by the app
     override fun onDestroy() {
         unregisterReceiver(myBroadcastReceiver)
         notificationManager.cancelAll()
@@ -152,7 +156,8 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
     }
 
 
-
+    // Back button will close fragment if open and turn orientation to portrait
+    // If fragment is not open then back button will trigger disconnect
     override fun onBackPressed() {
         if(testsignalfragment.isVisible) {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
@@ -160,6 +165,7 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
         } else
             disconnect()
     }
+
 
     private fun sendCommand(input: String) {
         if (m_bluetoothSocket != null) {
@@ -170,6 +176,7 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
             }
         }
     }
+
 
     private fun disconnect() {
         if (m_bluetoothSocket != null) {
@@ -187,18 +194,20 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
         startActivity(intentdisconnect)
     }
 
+
     private class ConnectToDevice(c: Context) : AsyncTask<Void, Void, String>() {
         private var connectSuccess: Boolean = true
         private val context: Context
-
         init {
             this.context = c
         }
+
 
         override fun onPreExecute() {
             super.onPreExecute()
             m_progress = ProgressDialog.show(context, "Kobler til...", "venligst vent")
         }
+
 
         override fun doInBackground(vararg p0: Void?): String? {
             try {
@@ -229,8 +238,8 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
             }
             m_progress.dismiss()
         }
-
     }
+
 
     override fun onFragmentInteraction(uri: Uri) {
         Log.d("Info button", "info is comming")

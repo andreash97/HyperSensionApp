@@ -43,8 +43,8 @@ class AdvancedActivity :AppCompatActivity(), TestsignalFragment.OnFragmentIntera
         val textFail = "Kunne ikke koble til!"
         val textSuccess = "Koblet til!"
         val duration = Toast.LENGTH_LONG
-
     }
+
 
     lateinit var testsignalfragment: TestsignalFragment
     lateinit var agraffragment : AgrafFragment
@@ -54,6 +54,7 @@ class AdvancedActivity :AppCompatActivity(), TestsignalFragment.OnFragmentIntera
     lateinit var builder: Notification.Builder
     private var ChannelID = "com.example.hypersensionapp"
     private var description = "Low battery"
+
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -92,6 +93,7 @@ class AdvancedActivity :AppCompatActivity(), TestsignalFragment.OnFragmentIntera
                 .setOngoing(true)
         }
 
+
         testsignalbutton.setOnClickListener {
             this.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
             supportFragmentManager
@@ -102,7 +104,6 @@ class AdvancedActivity :AppCompatActivity(), TestsignalFragment.OnFragmentIntera
                 .commit()
         }
         Akselgyro.setOnClickListener {
-
             supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.container1, akgyfragment)
@@ -110,6 +111,8 @@ class AdvancedActivity :AppCompatActivity(), TestsignalFragment.OnFragmentIntera
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .commit()
         }
+
+
         agrafer.setOnClickListener {
             supportFragmentManager
                 .beginTransaction()
@@ -119,22 +122,16 @@ class AdvancedActivity :AppCompatActivity(), TestsignalFragment.OnFragmentIntera
                 .commit()
         }
 
+
         disconnectbutton.setOnClickListener {
             disconnect()
         }
 
-
-
-
-
-
         testsignalfragment = TestsignalFragment.newInstance()
         akgyfragment = AkgyFragment.newInstance()
         agraffragment = AgrafFragment.newInstance()
-
         val intentFilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
         this.registerReceiver(myBroadcastReceiver, intentFilter)
-
     }
 
     // uses broadcastreciever and gets the batterystatus of the device, then displays it in activity_advanced.xml. https://www.youtube.com/watch?v=IekM_vjIiL0
@@ -142,10 +139,11 @@ class AdvancedActivity :AppCompatActivity(), TestsignalFragment.OnFragmentIntera
         @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
         override fun onReceive(context: Context?, intent: Intent) {
             val stringBuilder = StringBuilder()
-
             val batteryPercentage = intent.getIntExtra(BatteryManager.EXTRA_LEVEL,0)
             stringBuilder.append("Batteri: $batteryPercentage %")
             batterystatus2.text = stringBuilder
+
+
             // change battery picture based on how much battery is left
             if (batteryPercentage in 0..19) {
                 batim2.setImageResource(R.drawable.battery_25)
@@ -168,17 +166,20 @@ class AdvancedActivity :AppCompatActivity(), TestsignalFragment.OnFragmentIntera
             if(batteryPercentage > 20) {
                 notificationManager.cancelAll()
             }
-
         }
-
     }
-// unreg reciver on destroy
+
+
+    // Unregister receiver on destroy and removes all notifications made by the app
     override fun onDestroy() {
         unregisterReceiver(myBroadcastReceiver)
         notificationManager.cancelAll()
         super.onDestroy()
     }
 
+
+    // Back button will close fragment if open and turn orientation to portrait
+    // If fragment is not open then back button will trigger disconnect
     override fun onBackPressed() {
         if(testsignalfragment.isVisible || akgyfragment.isVisible || agraffragment.isVisible) {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
@@ -186,6 +187,7 @@ class AdvancedActivity :AppCompatActivity(), TestsignalFragment.OnFragmentIntera
         } else
             disconnect()
     }
+
 
     private fun sendCommand(input: String) {
         if (m_bluetoothSocket != null) {
@@ -257,6 +259,7 @@ class AdvancedActivity :AppCompatActivity(), TestsignalFragment.OnFragmentIntera
         }
 
     }
+
 
     override fun onFragmentInteraction(uri: Uri) {
         Log.d("Info button", "info is comming")

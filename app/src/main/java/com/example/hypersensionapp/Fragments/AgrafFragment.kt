@@ -15,27 +15,19 @@ import com.example.hypersensionapp.R
 
 class AgrafFragment : Fragment() {
     private var listener: OnFragmentInteractionListener? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-
         }
-
     }
+
 
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?,
                                savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-
-
         return inflater.inflate(R.layout.fragment_agraf, container, false)
     }
 
-
-    fun onButtonPressed(uri: Uri) {
-        listener?.onFragmentInteraction(uri)
-    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -46,6 +38,7 @@ class AgrafFragment : Fragment() {
         }
     }
 
+
     override fun onDetach() {
         super.onDetach()
         listener = null
@@ -53,18 +46,14 @@ class AgrafFragment : Fragment() {
 
 
     interface OnFragmentInteractionListener {
-
         fun onFragmentInteraction(uri: Uri)
     }
 
-    companion object {
 
+    companion object {
         @JvmStatic
         fun newInstance(): AgrafFragment {
-            val fragment = AgrafFragment()
-            val args = Bundle()
-            return fragment
-
+            return AgrafFragment()
         }
     }
 

@@ -23,25 +23,26 @@ class SelectDeviceActivity : AppCompatActivity() {
         val EXTRA_ADDRESS: String = "Device_address"
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.select_device_layout)
-
         m_bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+
+
         if(m_bluetoothAdapter == null) {
             toast("Enheten støtter ikke Bluetooth")
             return
         }
+
+
         if(!m_bluetoothAdapter!!.isEnabled) {
             val enableBluetoothIntent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
             startActivityForResult(enableBluetoothIntent, REQUEST_ENABLE_BLUETOOTH)
         }
-
         select_device_refresh.setOnClickListener{ pairedDeviceList() }
-
-
-
     }
+
 
     private fun pairedDeviceList() {
         m_pairedDevices = m_bluetoothAdapter!!.bondedDevices
@@ -58,12 +59,15 @@ class SelectDeviceActivity : AppCompatActivity() {
             toast("Ingen parrede enheter funnet")
         }
 
+
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listOfNames)
         select_device_list.adapter = adapter
         select_device_list.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             val device: BluetoothDevice = list[position]
             val address: String = device.address
-            // checks if advanced mode is selected or not,
+
+
+            // checks if advanced mode is selected or not
             if (advanced.isChecked) {
                 val intent = Intent(this, AdvancedActivity::class.java)
                 intent.putExtra(EXTRA_ADDRESS, address)
@@ -73,12 +77,7 @@ class SelectDeviceActivity : AppCompatActivity() {
                 intent.putExtra(EXTRA_ADDRESS, address)
                 startActivity(intent)
             }
-
-
-
         }
-
-
     }
 
 
