@@ -107,7 +107,6 @@ class AdvancedActivity :AppCompatActivity(), TestsignalFragment.OnFragmentIntera
                 .commit()
         }
         agrafer.setOnClickListener {
-            this.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
             supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.container1, agraffragment)
