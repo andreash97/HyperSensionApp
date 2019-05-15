@@ -91,6 +91,7 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
 
 
         testsignalbutton.setOnClickListener {
+            this.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
             supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.container1, testsignalfragment)
@@ -102,7 +103,6 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
         disconnectbutton.setOnClickListener {
             disconnect()
         }
-
         val intentFilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
         this.registerReceiver(myBroadcastReceiver, intentFilter)
         testsignalfragment = TestsignalFragment.newInstance()
@@ -135,7 +135,7 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
 
 
             // If statements for notification on low battery
-            if (batteryPercentage <= 99) {
+            if (batteryPercentage <= 20) {
                 notificationManager.notify(1234,builder.build())
             }
             if(batteryPercentage > 99) {
@@ -147,6 +147,7 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
     // unreg reciver on destroy
     override fun onDestroy() {
         unregisterReceiver(myBroadcastReceiver)
+        notificationManager.cancelAll()
         super.onDestroy()
     }
 
