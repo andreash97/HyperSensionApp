@@ -51,7 +51,7 @@
     <string name="title_activity_advanced">AdvancedActivity</string>
     <string name="akgyro">Akselerometer og gyrometer</string>
     <string name="agrafer">Grafer</string>
-    <string name="vsigtekst">Verifiser signalet ditt ved å sammenlikne den nedre grafen med den øvre grafen.\nDen øvre grafen viser hvordan signalet skal se ut, mens den nedre grafen viser ditt signal </string>
+    <string name="vsigtekst">Verifiser signalet ditt ved å sammenlikne graf b) med graf a). Graf a) viser hvordan signalet skal se ut, mens b) viser ditt signal. Bølgeformene skal se så like ut som mulig </string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

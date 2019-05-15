@@ -3,26 +3,28 @@
              xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context=".Fragments.TestsignalFragment" android:orientation="vertical">
+             tools:context=".Fragments.TestsignalFragment" android:orientation="vertical" android:id="@+id/frameLayout">
     <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
         <ImageView
                 android:src="@drawable/figursig"
-                android:layout_width="364dp"
-                android:layout_height="267dp" android:id="@+id/imageView2" android:scaleType="centerCrop"
-                android:rotationY="90"
-                android:rotation="90" tools:layout_editor_absoluteY="184dp"
-                app:layout_constraintStart_toStartOf="parent"/>
+                android:layout_width="509dp"
+                android:layout_height="288dp" android:id="@+id/imageView2" android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/vsigtekst" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.52"/>
         <TextView
                 android:text="@string/vsigtekst"
-                android:layout_width="548dp"
-                android:layout_height="201dp"
+                android:layout_width="660dp"
+                android:layout_height="112dp"
                 android:id="@+id/vsigtekst"
                 android:textSize="25dp"
-                android:rotation="90"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="451dp"
+                app:layout_constraintTop_toTopOf="@+id/frameLayout" android:layout_marginStart="8dp"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"/>
     </android.support.constraint.ConstraintLayout>
 </FrameLayout>

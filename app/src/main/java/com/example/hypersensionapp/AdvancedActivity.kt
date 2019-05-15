@@ -9,6 +9,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.pm.ActivityInfo
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.net.Uri
@@ -88,7 +89,7 @@ class AdvancedActivity :AppCompatActivity(), TestsignalFragment.OnFragmentIntera
         }
 
         testsignalbutton.setOnClickListener {
-
+            this.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
             supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.container1, testsignalfragment)
@@ -106,7 +107,7 @@ class AdvancedActivity :AppCompatActivity(), TestsignalFragment.OnFragmentIntera
                 .commit()
         }
         agrafer.setOnClickListener {
-
+            this.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
             supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.container1, agraffragment)
@@ -171,11 +172,13 @@ class AdvancedActivity :AppCompatActivity(), TestsignalFragment.OnFragmentIntera
 // unreg reciver on destroy
     override fun onDestroy() {
         unregisterReceiver(myBroadcastReceiver)
+        notificationManager.cancelAll()
         super.onDestroy()
     }
 
     override fun onBackPressed() {
         if(testsignalfragment.isVisible || akgyfragment.isVisible || agraffragment.isVisible) {
+            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
             super.onBackPressed()
         } else
             disconnect()
