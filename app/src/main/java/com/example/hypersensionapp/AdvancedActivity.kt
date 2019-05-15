@@ -20,6 +20,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.FragmentTransaction
 import android.util.Log
+import android.widget.Toast
 import com.example.hypersensionapp.Fragments.AgrafFragment
 import com.example.hypersensionapp.Fragments.AkgyFragment
 import com.example.hypersensionapp.Fragments.TestsignalFragment
@@ -39,6 +40,9 @@ class AdvancedActivity :AppCompatActivity(), TestsignalFragment.OnFragmentIntera
         lateinit var m_bluetoothAdapter: BluetoothAdapter
         var m_isConnected: Boolean = false
         lateinit var m_address: String
+        val textFail = "Kunne ikke koble til!"
+        val textSuccess = "Koblet til!"
+        val duration = Toast.LENGTH_LONG
 
     }
 
@@ -242,8 +246,12 @@ class AdvancedActivity :AppCompatActivity(), TestsignalFragment.OnFragmentIntera
             super.onPostExecute(result)
             if (!connectSuccess) {
                 Log.i("data", "Kunne ikke koble til")
+                val toastFail = Toast.makeText(context, textFail, duration)
+                toastFail.show()
             } else {
                 m_isConnected = true
+                val toastSuccess = Toast.makeText(context, textSuccess, duration)
+                toastSuccess.show()
             }
             m_progress.dismiss()
         }
