@@ -29,13 +29,13 @@ class SelectDeviceActivity : AppCompatActivity() {
         setContentView(R.layout.select_device_layout)
         m_bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
 
-
+        // If Bluetooth adapter is not found, the user gets notified.
         if(m_bluetoothAdapter == null) {
             toast("Enheten støtter ikke Bluetooth")
             return
         }
 
-
+        // If Bluetooth is disabled, a request is sent to enable it.
         if(!m_bluetoothAdapter!!.isEnabled) {
             val enableBluetoothIntent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
             startActivityForResult(enableBluetoothIntent, REQUEST_ENABLE_BLUETOOTH)
@@ -43,7 +43,7 @@ class SelectDeviceActivity : AppCompatActivity() {
         select_device_refresh.setOnClickListener{ pairedDeviceList() }
     }
 
-
+    // List over previously paired devices. There are two lists, one for the adresses and one for list of names.
     private fun pairedDeviceList() {
         m_pairedDevices = m_bluetoothAdapter!!.bondedDevices
         val list : ArrayList<BluetoothDevice> = ArrayList() //
@@ -59,7 +59,7 @@ class SelectDeviceActivity : AppCompatActivity() {
             toast("Ingen parrede enheter funnet")
         }
 
-
+        // Populate the list view with paired devices. Depending on what is clicked, address gets updated.
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listOfNames)
         select_device_list.adapter = adapter
         select_device_list.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
@@ -67,7 +67,7 @@ class SelectDeviceActivity : AppCompatActivity() {
             val address: String = device.address
 
 
-            // checks if advanced mode is selected or not
+            // The address is put in the intent, starts a new activity. Checks if advanced mode is selected or not
             if (advanced.isChecked) {
                 val intent = Intent(this, AdvancedActivity::class.java)
                 intent.putExtra(EXTRA_ADDRESS, address)
@@ -80,7 +80,7 @@ class SelectDeviceActivity : AppCompatActivity() {
         }
     }
 
-
+    // Function for checking the result of Bluetooth activation and outputting the result to the user.
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_ENABLE_BLUETOOTH) {

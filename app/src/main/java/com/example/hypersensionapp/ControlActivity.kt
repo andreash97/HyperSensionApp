@@ -57,7 +57,7 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
         ConnectToDevice(this).execute()
 
 
-        // Notification https://www.youtube.com/watch?v=Fo7WksYMlCU
+        // Notification
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             val intent = Intent(this, ControlActivity::class.java)
             val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
@@ -166,7 +166,7 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
             disconnect()
     }
 
-
+    // Function for sending commands to the connected device.
     private fun sendCommand(input: String) {
         if (m_bluetoothSocket != null) {
             try {
@@ -177,7 +177,7 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
         }
     }
 
-
+    // Disconnect function. "finish()" executes "onDestroy()", ends activity.
     private fun disconnect() {
         if (m_bluetoothSocket != null) {
             try {
@@ -194,21 +194,17 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
         startActivity(intentdisconnect)
     }
 
-
+    // AsyncTask for establishing connection with the device.
     private class ConnectToDevice(c: Context) : AsyncTask<Void, Void, String>() {
         private var connectSuccess: Boolean = true
         private val context: Context
         init {
             this.context = c
         }
-
-
         override fun onPreExecute() {
             super.onPreExecute()
             m_progress = ProgressDialog.show(context, "Kobler til...", "venligst vent")
         }
-
-
         override fun doInBackground(vararg p0: Void?): String? {
             try {
                 if (m_bluetoothSocket == null || !m_isConnected) {
@@ -224,7 +220,6 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
             }
             return null
         }
-
         override fun onPostExecute(result: String?) {
             super.onPostExecute(result)
             if (!connectSuccess) {
@@ -239,7 +234,6 @@ class ControlActivity: AppCompatActivity(), TestsignalFragment.OnFragmentInterac
             m_progress.dismiss()
         }
     }
-
 
     override fun onFragmentInteraction(uri: Uri) {
         Log.d("Info button", "info is comming")

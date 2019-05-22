@@ -9,7 +9,7 @@
     <string name="devicestatus">On body</string>
     <string name="testsignaltext">Verifisere signal</string>
     <string name="refresh">Oppdater</string>
-    <string name="batstatex">Batteri: 200 %</string>
+    <string name="batstatex">Batteri: 100 %</string>
     <string name="infotittle">Guide for målinger med IsensU-enheten</string>
     <string name="infotekst1">1 Skru på IsensU-enheten ved å trykke på PÅ knappen i 3 sekunder til den grønne lysdioden
         slukker.

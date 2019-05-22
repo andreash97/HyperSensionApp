@@ -64,7 +64,7 @@ class AdvancedActivity :AppCompatActivity(), TestsignalFragment.OnFragmentIntera
         ConnectToDevice(this).execute()
 
 
-        // Notification https://www.youtube.com/watch?v=Fo7WksYMlCU
+        // Notification
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val intent = Intent(this, ControlActivity::class.java)
         val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
@@ -187,8 +187,6 @@ class AdvancedActivity :AppCompatActivity(), TestsignalFragment.OnFragmentIntera
         } else
             disconnect()
     }
-
-
     private fun sendCommand(input: String) {
         if (m_bluetoothSocket != null) {
             try {
@@ -198,7 +196,6 @@ class AdvancedActivity :AppCompatActivity(), TestsignalFragment.OnFragmentIntera
             }
         }
     }
-
     private fun disconnect() {
         if (m_bluetoothSocket != null) {
             try {
@@ -218,16 +215,13 @@ class AdvancedActivity :AppCompatActivity(), TestsignalFragment.OnFragmentIntera
     private class ConnectToDevice(c: Context) : AsyncTask<Void, Void, String>() {
         private var connectSuccess: Boolean = true
         private val context: Context
-
         init {
             this.context = c
         }
-
         override fun onPreExecute() {
             super.onPreExecute()
             m_progress = ProgressDialog.show(context, "Kobler til...", "venligst vent")
         }
-
         override fun doInBackground(vararg p0: Void?): String? {
             try {
                 if (m_bluetoothSocket == null || !m_isConnected) {
@@ -243,7 +237,6 @@ class AdvancedActivity :AppCompatActivity(), TestsignalFragment.OnFragmentIntera
             }
             return null
         }
-
         override fun onPostExecute(result: String?) {
             super.onPostExecute(result)
             if (!connectSuccess) {
@@ -257,7 +250,6 @@ class AdvancedActivity :AppCompatActivity(), TestsignalFragment.OnFragmentIntera
             }
             m_progress.dismiss()
         }
-
     }
 
 
